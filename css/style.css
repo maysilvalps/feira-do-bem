@@ -33,7 +33,7 @@
 
 /* =========== RESET BÁSICO =========== */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   margin: 0;
   background: var(--paper);
@@ -42,6 +42,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 h1, h2, h3, h4 { font-family: var(--font-display); margin: 0 0 .5em; line-height: 1.1; }
 p { margin: 0 0 1em; }
@@ -174,9 +175,6 @@ button { font-family: inherit; }
 /* =========== HERO =========== */
 .hero {
   position: relative;
-  /* Foto de banner + degradê verde por cima, para o texto continuar legível
-     independente do que aparece na imagem. Troque "images/banner.jpg" pelo
-     caminho/nome real do seu arquivo se for diferente. */
   background-image:
     linear-gradient(100deg, rgba(27, 38, 24, 0.94) 0%, rgba(27, 38, 24, 0.82) 38%, rgba(27, 38, 24, 0.45) 100%),
     url("../images/banner.jpg");
@@ -208,10 +206,13 @@ button { font-family: inherit; }
   font-weight: 800;
   max-width: 14ch;
   color: var(--paper);
+  display: block !important;
+  white-space: normal !important;
 }
 .chalk-underline {
   position: relative;
-  white-space: nowrap;
+  display: inline-block !important;
+  white-space: nowrap !important;
 }
 .chalk-underline::after {
   content: "";
@@ -618,10 +619,8 @@ button { font-family: inherit; }
 
 /* =====================================================
    PÁGINA DE BLOG — "diário" com clima anos 2000
-   (menu lateral com widgets, contador, livro de visitas)
    ===================================================== */
 
-/* --- faixa de boas-vindas com letreiro rolante (marquee) --- */
 .blog-hero-band {
   background: var(--moss);
   color: var(--paper);
@@ -676,7 +675,6 @@ button { font-family: inherit; }
   .marquee { overflow-x: auto; }
 }
 
-/* --- layout de duas colunas: posts + barra lateral --- */
 .blog-layout {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -687,7 +685,6 @@ button { font-family: inherit; }
   padding: 64px 24px 96px;
 }
 
-/* --- posts, com selo de data grande (referência ao blog "de diário") --- */
 .blog-posts { display: flex; flex-direction: column; gap: 32px; }
 .post-retro {
   position: relative;
@@ -748,7 +745,6 @@ button { font-family: inherit; }
   margin-top: 4px;
 }
 
-/* --- barra lateral com widgets estilo "blog de 2005" --- */
 .blog-sidebar { display: flex; flex-direction: column; gap: 24px; }
 .widget {
   background: var(--paper-dark);
@@ -786,7 +782,6 @@ button { font-family: inherit; }
   font-size: 0.8rem;
 }
 
-/* --- contador de visitas, tipo "hit counter" antigo --- */
 .hitcounter {
   display: flex;
   justify-content: center;
@@ -812,7 +807,6 @@ button { font-family: inherit; }
   margin-top: 8px;
 }
 
-/* --- livro de visitas (guestbook) --- */
 .guestbook-form { display: flex; flex-direction: column; gap: 10px; }
 .guestbook-form input,
 .guestbook-form textarea {
@@ -913,38 +907,61 @@ button { font-family: inherit; }
   .nav-toggle { display: flex; }
   .crate { font-size: 1.3rem; }
   .sobre-stats { grid-template-columns: 1fr; max-width: 260px; margin: 0 auto; }
+
+  /* =====================================================
+   AJUSTES GINAIS UNIFICADOS PARA CELULAR
+   ===================================================== */
+
+/* Bloqueia o arrasto para o lado e remove a barra vazia da lateral */
+body, html {
+  overflow-x: hidden;
 }
+
+/* Força o título e a palavra dinâmica a nunca quebrarem em duas linhas */
+.hero-title {
+  display: block !important;
+  white-space: normal !important;
+}
+
+.chalk-underline {
+  display: inline !important;
+  white-space: nowrap !important; /* Obriga a palavra atual a ficar reta */
+}
+
+/* Regras para celulares e telas menores */
 @media (max-width: 720px) {
-
-  @media (max-width: 720px) {
-  /* ... mantenha os códigos que colocamos antes aqui ... */
-
-  /* CORREÇÃO DO RODAPÉ NO CELULAR */
-  .footer-inner {
-    grid-template-columns: 1fr !important; /* Empilha as 3 colunas uma embaixo da outra */
-    text-align: left;                       /* Mantém o texto alinhado à esquerda */
-    gap: 30px;                             /* Dá um espaço saudável entre os blocos */
+  /* Esconde as seções longas para encurtar a página no celular */
+  #historia, #ods {
+    display: none !important;
   }
 
-  /* Evita que títulos e textos longos estourem para o lado */
-  body, html {
-    overflow-x: hidden;                    /* Bloqueia o arrasto para o lado e remove a barra vazia */
+  /* Compacta o espaçamento das seções */
+  .section {
+    padding: 40px 0;
+  }
+
+  /* Corrige e empilha as colunas do rodapé */
+  .footer-inner {
+    grid-template-columns: 1fr !important;
+    text-align: left;
+    gap: 30px;
   }
 
   .site-footer {
     padding-left: 24px;
     padding-right: 24px;
   }
-}
-  /* ... seus códigos atuais do @media de 720px continuam aqui ... */
 
-  /* Remove seções muito longas no celular para encurtar a página */
-  #historia, #ods {
-    display: none !important;
-  }
-  
-  /* Ajusta o espaçamento das outras seções para o celular ficar mais compacto */
-  .section {
-    padding: 40px 0;
+  /* Reduz dinamicamente o tamanho da fonte para que caiba tudo em linha reta */
+  .hero-title {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
   }
 }
+
+/* Para telas de celulares ainda mais estreitas */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+}}
