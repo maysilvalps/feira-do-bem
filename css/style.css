@@ -915,6 +915,27 @@ button { font-family: inherit; }
   .sobre-stats { grid-template-columns: 1fr; max-width: 260px; margin: 0 auto; }
 }
 @media (max-width: 720px) {
+
+  @media (max-width: 720px) {
+  /* ... mantenha os códigos que colocamos antes aqui ... */
+
+  /* CORREÇÃO DO RODAPÉ NO CELULAR */
+  .footer-inner {
+    grid-template-columns: 1fr !important; /* Empilha as 3 colunas uma embaixo da outra */
+    text-align: left;                       /* Mantém o texto alinhado à esquerda */
+    gap: 30px;                             /* Dá um espaço saudável entre os blocos */
+  }
+
+  /* Evita que títulos e textos longos estourem para o lado */
+  body, html {
+    overflow-x: hidden;                    /* Bloqueia o arrasto para o lado e remove a barra vazia */
+  }
+
+  .site-footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
   /* ... seus códigos atuais do @media de 720px continuam aqui ... */
 
   /* Remove seções muito longas no celular para encurtar a página */
