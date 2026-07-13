@@ -928,9 +928,41 @@ body, html {
   white-space: nowrap !important; /* Obriga a palavra atual a ficar reta */
 }
 
-/* Regras para celulares e telas menores */
+/* =====================================================
+   AJUSTES FINAIS UNIFICADOS E COMPACTOS PARA CELULAR
+   ===================================================== */
+
+body, html {
+  overflow-x: hidden;
+}
+
+/* Garante o comportamento em linha no computador */
+.hero-title {
+  display: block !important;
+  white-space: normal !important;
+}
+
+.chalk-underline {
+  white-space: nowrap !important;
+  color: var(--corn); /* Dá um destaque bonito na palavra que muda */
+}
+
+/* =====================================================
+   AJUSTES FINAIS UNIFICADOS PARA CELULAR
+   ===================================================== */
+
+body, html {
+  overflow-x: hidden;
+}
+
+.hero-title {
+  display: block;
+  white-space: normal;
+}
+
+/* Configurações exclusivas para celulares e telas menores */
 @media (max-width: 720px) {
-  /* Esconde as seções longas para encurtar a página no celular */
+  /* Oculta as seções longas para encurtar a página no celular */
   #historia, #ods {
     display: none !important;
   }
@@ -952,16 +984,16 @@ body, html {
     padding-right: 24px;
   }
 
-  /* Reduz dinamicamente o tamanho da fonte para que caiba tudo em linha reta */
+  /* Reduz o tamanho da fonte para que a frase fixa caiba perfeitamente no celular */
   .hero-title {
-    font-size: 1.8rem !important;
-    line-height: 1.3 !important;
+    font-size: 2.2rem !important;
+    line-height: 1.25 !important;
   }
 }
 
-/* Para telas de celulares ainda mais estreitas */
-@media (max-width: 380px) {
+/* Ajuste fino extra para celulares muito pequenos */
+@media (max-width: 410px) {
   .hero-title {
-    font-size: 1.5rem !important;
+    font-size: 1.9rem !important;
   }
-}}
+}
