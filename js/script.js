@@ -10,7 +10,7 @@
 const CONFIG = {
   // Número de WhatsApp da distribuidora/organização, no formato internacional,
   // só dígitos (código do país + DDD + número). Exemplo para Brasil, DDD 66:
-  whatsappNumber: "5566999999999",
+  whatsappNumber: "5566999865305",
 
   // Mensagem enviada automaticamente ao WhatsApp quando alguém se cadastra
   // para RECEBER doações.
@@ -24,6 +24,9 @@ const CONFIG = {
     `para doar o excedente de alimentos.`,
 };
 
+// -----------------------------------------------------
+// INICIALIZAÇÃO DO SITE
+// -----------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   initMenu();
   initFormCadastro();
@@ -73,7 +76,7 @@ function initFormCadastro() {
   const sucessoNome = document.getElementById("sucessoNome");
   const linkWhats = document.getElementById("linkWhats");
 
-  // Máscara simples de telefone: (99) 99999-9999
+  // Máscara simples de telefone: (99) 99986-5305
   whatsInput.addEventListener("input", () => {
     let digitos = whatsInput.value.replace(/\D/g, "").slice(0, 11);
     if (digitos.length > 6) {
@@ -115,11 +118,8 @@ function initFormCadastro() {
 
     if (!valido) return;
 
-    // Salva localmente (útil para o professor conferir os cadastros de teste
-    // e como ponto de partida caso você conecte um back-end depois).
     salvarCadastroLocal({ nome, whatsapp: whatsDigitos, bairro, data: new Date().toISOString() });
 
-    // Monta o link do WhatsApp com a mensagem pronta
     const mensagem = encodeURIComponent(CONFIG.mensagemPadrao(nome, bairro));
     const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${mensagem}`;
 
@@ -128,7 +128,6 @@ function initFormCadastro() {
     sucesso.hidden = false;
     sucesso.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    // Abre o WhatsApp automaticamente numa nova aba
     window.open(url, "_blank", "noopener");
 
     form.reset();
@@ -210,19 +209,16 @@ function initGuestbook() {
     }
     vazio.hidden = true;
 
-    recados
-      .slice()
-      .reverse()
-      .forEach((recado) => {
-        const item = document.createElement("li");
-        item.className = "guestbook-entry";
-        item.innerHTML = `
-          <span class="nome">${escapeHtml(recado.nome)}</span>
-          <span class="data">${formatarData(recado.data)}</span>
-          <p>${escapeHtml(recado.mensagem)}</p>
-        `;
-        lista.appendChild(item);
-      });
+    recados.slice().reverse().forEach((recado) => {
+      const item = document.createElement("li");
+      item.className = "guestbook-entry";
+      item.innerHTML = `
+        <span class="nome">${escapeHtml(recado.nome)}</span>
+        <span class="data">${formatarData(recado.data)}</span>
+        <p>${escapeHtml(recado.mensagem)}</p>
+      `;
+      lista.appendChild(item);
+    });
   }
 
   function escapeHtml(texto) {
@@ -252,7 +248,7 @@ function initGuestbook() {
 // -----------------------------------------------------
 function initScrollReveal() {
   const alvos = document.querySelectorAll(
-    ".passo-card, .ods-stamp, .teaser-card, .stamp-card, .sobre-texto, .post-retro, .widget, .historia-texto, .historia-quote, .banner-doadores-inner"
+    ".passo-card, como-funciona, o-problema, .ods-stamp, .teaser-card, .stamp-card, .sobre-texto, .post-retro, .widget, historia-card, .historia-texto, .historia-quote, .banner-doadores-inner"
   );
 
   alvos.forEach((el) => el.setAttribute("data-reveal", ""));
@@ -304,3 +300,20 @@ function initLinkDoador() {
   link.target = "_blank";
   link.rel = "noopener";
 }
+
+// -----------------------------------------------------
+// AJUSTE DO LINK "OS ODS" PARA ABRIR PÁGINA DIFERENTE NO MOBILE
+// -----------------------------------------------------
+function ajustarLinkODS() {
+  const linkOds = document.getElementById('linkODS');
+  if (!linkOds) return;
+
+  if (window.innerWidth <= 720) {
+    linkOds.href = "ods.html";
+  } else {
+    linkOds.href = "#ods";
+  }
+}
+
+window.addEventListener("resize", ajustarLinkODS);
+window.addEventListener("load", ajustarLinkODS);

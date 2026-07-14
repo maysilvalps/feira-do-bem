@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feira do Bem — Objetivos de Desenvolvimento Sustentável</title>
+  <meta name="description"
+    content="Feira do Bem, em Rondonópolis (MT): explicação dos Objetivos de Desenvolvimento Sustentável por trás do projeto." />
+
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Caveat:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body id="topo">
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="index.html#topo" class="logo" aria-label="Feira do Bem, página inicial">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
+            <path d="M24 6c8 0 14 7 14 15 0 10-14 21-14 21S10 31 10 21C10 13 16 6 24 6Z" stroke="currentColor"
+              stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M24 14v18M17 20c3 0 7 2 7 7M31 20c-3 0-7 2-7 7" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="logo-text">Feira<em>do Bem</em></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Abrir menu</span>
+      </button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#topo">Início</a>
+        <a href="index.html#historia">Sobre</a>
+        <a href="index.html#como-funciona">Como funciona</a>
+        <section class="section ods" id="ods-page">
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato">Contato</a>
+        <a href="index.html#cadastro" class="btn btn-small btn-leaf">Quero me cadastrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============ ODS ============ -->
+    <section class="section ods" id="ods-page">
+      <div class="wrap">
+        <p class="tag-label">Alinhado à agenda 2030</p>
+        <h2 class="section-title">Os Objetivos de Desenvolvimento Sustentável por trás da ideia</h2>
+        <p class="section-lead">
+          O projeto nasceu de um problema concreto, mas conversa direto com metas globais
+          da ONU. Cada carimbo abaixo mostra onde a Feira do Bem se encaixa.
+        </p>
+
+        <div class="ods-grid">
+          <div class="ods-stamp">
+            <span class="ods-num">01</span>
+            <h3>Erradicação da pobreza</h3>
+            <p>Reduzir o custo com alimentação de famílias em situação de vulnerabilidade.</p>
+          </div>
+          <div class="ods-stamp ods-stamp--tilt-r">
+            <span class="ods-num">02</span>
+            <h3>Fome zero</h3>
+            <p>Redirecionar comida boa que iria para o lixo até quem precisa dela hoje.</p>
+          </div>
+          <div class="ods-stamp">
+            <span class="ods-num">10</span>
+            <h3>Redução das desigualdades</h3>
+            <p>Aproximar, com tecnologia simples, quem tem excedente de quem tem necessidade.</p>
+          </div>
+          <div class="ods-stamp ods-stamp--tilt-r">
+            <span class="ods-num">11</span>
+            <h3>Cidades sustentáveis</h3>
+            <p>Fortalecer redes locais de solidariedade dentro do próprio bairro.</p>
+          </div>
+          <div class="ods-stamp">
+            <span class="ods-num">12</span>
+            <h3>Consumo responsável</h3>
+            <p>Menos desperdício na cadeia de distribuição de alimentos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="contato">
+    <div class="wrap footer-inner">
+      <div class="footer-col">
+        <span class="logo-text logo-text--footer">Feira<em>do Bem</em></span>
+        <p>Um projeto de extensão universitária conectando excedente de hortifrúti a
+          quem precisa, com tecnologia simples e contato direto pelo WhatsApp.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>WhatsApp: <span id="footerWhats">(66) 99986-5305</span></p>
+        <p>Rondonópolis, MT</p>
+        <p>Atendimento de segunda a sábado</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sobre o projeto</h4>
+        <p>Atividade Extensionista — Tecnologia Aplicada à Inclusão Digital.</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>Feira do Bem — feito para não deixar comida boa virar lixo.</p>
+      <p style="margin-top: 8px;">&copy; 2026 desenvolvido por Mayara Silva.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Mesmo script para ajustar o link no mobile (opcional, pois aqui o link é fixo)
+    function ajustarLinkODS() {
+      const linkOds = document.getElementById('linkODS');
+      if (!linkOds) return;
+
+      if (window.innerWidth <= 720) {
+        linkOds.href = "ods.html";
+      } else {
+        linkOds.href = "ods.html";
+      }
+    }
+    window.addEventListener("resize", ajustarLinkODS);
+    window.addEventListener("load", ajustarLinkODS);
+  </script>
+</body>
+
+</html>
