@@ -1,3 +1,7 @@
+---
+layout: none
+---
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -79,105 +83,25 @@
       </div>
     </section>
 
-    <!-- ============ LAYOUT: POSTS + BARRA LATERAL ============ -->
+     <!-- ============ LAYOUT: POSTS + BARRA LATERAL ============ -->
     <div class="blog-layout">
-
       <div class="blog-posts">
-
-        <article class="post-retro" id="diario-entrega">
-          <div class="post-date-stamp">
-            <span class="dia">06</span>
-            <span class="mes-ano">jul 2026</span>
-          </div>
-          <div>
-            <span class="post-tag">Diário de entrega</span>
-            <h2>Uma manhã de sábado na Feira do Bem</h2>
-            <div class="post-body">
-              <p>A caixa sai da distribuidora ainda cedo, antes do sol esquentar. Dentro
-                dela, o que sobrou da semana: folhas que já não tinham "cara de gôndola",
-                tomates maduros demais para a prateleira, um punhado de cenouras tortas.
-                Nada disso está estragado — só não se encaixava mais no padrão do comércio.</p>
-              <p>A primeira parada é numa rua de terra, numa casa com a porta sempre
-                entreaberta. A família já foi avisada pelo WhatsApp na noite anterior.
-                Não há cerimônia: é só estender a caixa, e o resto acontece sozinho —
-                as mãos que recebem, as crianças que espiam, o "muito obrigada" de sempre.</p>
-              <p>Em poucas horas, o que seria descartado já virou almoço em três ou quatro
-                casas diferentes. É basicamente esse o projeto inteiro: encurtar a distância
-                entre o excedente e a mesa.</p>
-              <p class="post-signature">— Equipe Feira do Bem</p>
+        {% for post in site.posts %}
+          <article class="post-retro" id="{{ post.slug | default: post.title | slugify }}">
+            <div class="post-date-stamp">
+              <span class="dia">{{ post.date | date: "%d" }}</span>
+              <span class="mes-ano">{{ post.date | date: "%b %Y" | downcase }}</span>
             </div>
-          </div>
-        </article>
-
-        <article class="post-retro" id="ods">
-          <div class="post-date-stamp">
-            <span class="dia">29</span>
-            <span class="mes-ano">jun 2026</span>
-          </div>
-          <div>
-            <span class="post-tag">ODS na prática</span>
-            <h2>O que são os ODS e por que um projeto de bairro se conecta a eles</h2>
-            <div class="post-body">
-              <p>Os 17 Objetivos de Desenvolvimento Sustentável foram definidos pela ONU
-                como uma agenda comum para os países até 2030. Falam de fome, pobreza,
-                desigualdade, cidades, consumo e muito mais.</p>
-              <p>Parecem grandes demais para caber no dia a dia de um bairro — mas não são.
-                Uma distribuidora que decide não jogar fora o excedente, e uma comunidade que
-                se organiza para recebê-lo, já estão atuando diretamente em pelo menos três
-                desses objetivos: fome zero, redução das desigualdades e consumo responsável.</p>
-              <p>A mudança de escala não muda a lógica: metas globais também se resolvem
-                uma vizinhança de cada vez.</p>
-              <p class="post-signature">— Equipe Feira do Bem</p>
+            <div>
+              <span class="post-tag">{{ post.category | default: "Post" }}</span>
+              <h2>{{ post.title }}</h2>
+              <div class="post-body">
+                {{ post.excerpt | markdownify }}
+                <a href="{{ post.url }}">Leia mais</a>
+              </div>
             </div>
-          </div>
-        </article>
-
-        <article class="post-retro" id="inclusao-digital">
-          <div class="post-date-stamp">
-            <span class="dia">18</span>
-            <span class="mes-ano">jun 2026</span>
-          </div>
-          <div>
-            <span class="post-tag">Inclusão digital</span>
-            <h2>Tecnologia simples também é inclusão</h2>
-            <div class="post-body">
-              <p>Falar em "tecnologia da informação a serviço da inclusão" não significa,
-                necessariamente, aplicativo sofisticado ou sistema cheio de etapas. Muitas
-                vezes significa o oposto: reduzir barreiras para que qualquer pessoa, com
-                qualquer nível de familiaridade digital, consiga participar.</p>
-              <p>É por isso que o cadastro da Feira do Bem pede apenas nome e WhatsApp —
-                o canal que a maioria das famílias já usa para falar com a escola dos filhos,
-                com o posto de saúde, com o vizinho. Nenhuma senha nova para lembrar, nenhum
-                aplicativo novo para baixar.</p>
-              <p>Inclusão digital começa quando a tecnologia se adapta à rotina das pessoas
-                — e não o contrário.</p>
-              <p class="post-signature">— Equipe Feira do Bem</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="post-retro" id="dicas-conservacao">
-          <div class="post-date-stamp">
-            <span class="dia">05</span>
-            <span class="mes-ano">jun 2026</span>
-          </div>
-          <div>
-            <span class="post-tag">Dicas práticas</span>
-            <h2>Como conservar por mais tempo o que você recebeu</h2>
-            <div class="post-body">
-              <p>Folhosas como alface e couve duram mais quando lavadas, secas e guardadas
-                envoltas em um pano ou papel dentro da geladeira, em vez de soltas na gaveta.</p>
-              <p>Tomates e bananas amadurecem mais rápido perto de outras frutas — vale
-                separá-los se você quiser que durem mais alguns dias antes do consumo.</p>
-              <p>Cenouras, beterrabas e outras raízes se conservam bem fora da geladeira,
-                em local fresco e arejado, longe da luz direta do sol.</p>
-              <p>Na dúvida, cozinhar e congelar em porções é sempre uma forma segura de
-                aproveitar tudo antes que passe do ponto.</p>
-              <p class="post-signature">— Equipe Feira do Bem</p>
-            </div>
-          </div>
-        </article>
-
+          </article>
+        {% endfor %}
       </div>
 
       <!-- ============ BARRA LATERAL COM WIDGETS ============ -->

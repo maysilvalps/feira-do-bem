@@ -1,0 +1,19 @@
+# Pastas geradas pelo Jekyll (não subir!)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Arquivos e pastas do Ruby (não subir!)
+.bundle/
+vendor/
+.ruby-version
+
+# Arquivos de sistema (geralmente criados pelo Windows)
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Logs ou arquivos de erro temporários
+*.log
+*.log.*
