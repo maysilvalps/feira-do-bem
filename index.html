@@ -299,51 +299,31 @@ layout: none
 
     <!-- ============ BLOG (teaser) ============ -->
     <section class="section blog" id="blog">
-      <div class="wrap">
-        <p class="tag-label">Histórias &amp; dicas</p>
-        <h2 class="section-title">O diário da Feira do Bem</h2>
-        <p class="section-lead">
-          Entregas da semana, histórias de famílias da comunidade e dicas práticas —
-          tudo isso a gente registra no nosso blog.
-        </p>
+  <div class="wrap">
+    <p class="tag-label">Histórias &amp; dicas</p>
+    <h2 class="section-title">O diário da Feira do Bem</h2>
+    <p class="section-lead">
+      Entregas da semana, histórias de famílias da comunidade e dicas práticas —
+      tudo isso a gente registra no nosso blog.
+    </p>
 
-        <div class="blog-grid">
+    <div class="blog-grid">
+      {% assign recentes = site.posts | slice: 0,3 %}
+      {% for post in recentes %}
+        <a class="teaser-card" href="{{ post.url }}">
+          <p class="blog-kicker">{{ post.category | default: "Post" | upcase }}</p>
+          <h3>{{ post.title }}</h3>
+          <p class="blog-resumo">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+          <span class="teaser-link">Ler no blog →</span>
+        </a>
+      {% endfor %}
+    </div>
 
-          <a class="teaser-card" href="blog.html#diario-entrega">
-            <p class="blog-kicker">Diário de entrega</p>
-            <h3>Uma manhã de sábado na Feira do Bem</h3>
-            <p class="blog-resumo">
-              Como é, na prática, o trajeto entre a distribuidora e a primeira porta
-              que recebe a caixa de hortifrúti da semana.
-            </p>
-            <span class="teaser-link">Ler no blog →</span>
-          </a>
-
-          <a class="teaser-card" href="blog.html#ods">
-            <p class="blog-kicker">ODS na prática</p>
-            <h3>O que são os ODS e por que um projeto de bairro se conecta a eles</h3>
-            <p class="blog-resumo">
-              Metas globais da ONU também se resolvem uma vizinhança de cada vez.
-            </p>
-            <span class="teaser-link">Ler no blog →</span>
-          </a>
-
-          <a class="teaser-card" href="blog.html#dicas-conservacao">
-            <p class="blog-kicker">Dicas práticas</p>
-            <h3>Como conservar por mais tempo o que você recebeu</h3>
-            <p class="blog-resumo">
-              Pequenos cuidados no armazenamento fazem a doação durar bem mais dias.
-            </p>
-            <span class="teaser-link">Ler no blog →</span>
-          </a>
-
-        </div>
-
-        <div class="blog-cta">
-          <a href="blog.html" class="btn btn-tomato">Ver todas as histórias e dicas</a>
-        </div>
-      </div>
-    </section>
+    <div class="blog-cta">
+      <a href="blog.html" class="btn btn-tomato">Ver todas as histórias e dicas</a>
+    </div>
+  </div>
+</section>
 
   </main>
 

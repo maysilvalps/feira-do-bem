@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page.title }} — Feira do Bem</title>
+  <meta name="description" content="{{ page.excerpt | strip_html | truncate: 160 }}" />
+  <link rel="icon" type="image/png" href="/images/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Caveat:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body id="topo">
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a href="/index.html" class="logo" aria-label="Feira do Bem, página inicial">
+        <span class="logo-mark" aria-hidden="true">
+          <!-- SVG a partir do seu código existente -->
+          <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
+            <path d="M24 6c8 0 14 7 14 15 0 10-14 21-14 21S10 31 10 21C10 13 16 6 24 6Z" stroke="currentColor"
+              stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M24 14v18M17 20c3 0 7 2 7 7M31 20c-3 0-7 2-7 7" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="logo-text">Feira<em>do Bem</em></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Abrir menu</span>
+      </button>
+
+      <nav class="nav" id="navMenu">
+        <a href="/index.html#topo">Início</a>
+        <a href="/index.html#historia">Sobre</a>
+        <a href="/index.html#como-funciona">Como funciona</a>
+        <a href="/index.html#ods">Os ODS aqui</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/index.html#contato">Contato</a>
+        <a href="/index.html#cadastro" class="btn btn-small btn-leaf">Quero me cadastrar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" class="section">
+    <div class="wrap">
+      <article class="post-retro" role="main">
+        <div class="post-date-stamp" aria-label="Data da postagem">
+          <span class="dia">{{ page.date | date: "%d" }}</span>
+          <span class="mes-ano">{{ page.date | date: "%b %Y" | downcase }}</span>
+        </div>
+        <div>
+          <span class="post-tag">{{ page.category | default: "Post" }}</span>
+          <h1>{{ page.title }}</h1>
+          <div class="post-body">
+            {{ content }}
+          </div>
+        </div>
+      </article>
+
+      <div class="blog-back" style="margin-top: 40px;">
+        <a href="/blog.html" class="btn btn-outline-dark">← Voltar ao blog</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="wrap footer-inner">
+      <div class="footer-col">
+        <span class="logo-text logo-text--footer">Feira<em>do Bem</em></span>
+        <p>Um projeto de extensão universitária conectando excedente de hortifrúti a
+          quem precisa, com tecnologia simples e contato direto pelo WhatsApp.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>WhatsApp: <span id="footerWhats">(66) 99986-5305</span></p>
+        <p>Rondonópolis, MT</p>
+        <p>Atendimento de segunda a sábado</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sobre o projeto</h4>
+        <p>Atividade Extensionista — Tecnologia Aplicada à Inclusão Digital.</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>Feira do Bem — feito para não deixar comida boa virar lixo.</p>
+      <p style="margin-top: 8px;">&copy; 2026 desenvolvido por Mayara Silva.</p>
+    </div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+
+</html>

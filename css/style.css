@@ -344,9 +344,14 @@ button { font-family: inherit; }
   text-transform: uppercase; letter-spacing: .05em; color: var(--leaf);
   border: 1px solid var(--leaf); border-radius: 999px; padding: 3px 10px; margin-bottom: 10px;
 }
-.post-retro h2 { font-size: 1.35rem; margin-bottom: 12px; }
-.post-body p { font-size: 0.98rem; color: rgba(35,48,31,.82); }
-.post-signature { font-family: var(--font-chalk); font-size: 1.3rem; color: var(--leaf); margin-top: 4px; }
+.post-retro {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  background: var(--paper-dark);
+  /* ajuste caso já tenha outras definições para esta classe */
+}
 
 .blog-sidebar { display: flex; flex-direction: column; gap: 24px; }
 .widget { background: var(--paper-dark); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
