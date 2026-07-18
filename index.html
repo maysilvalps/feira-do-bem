@@ -309,14 +309,14 @@ layout: none
 
     <div class="blog-grid">
       {% assign recentes = site.posts | slice: 0,3 %}
-      {% for post in recentes %}
-        <a class="teaser-card" href="{{ post.url }}">
-          <p class="blog-kicker">{{ post.category | default: "Post" | upcase }}</p>
-          <h3>{{ post.title }}</h3>
-          <p class="blog-resumo">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-          <span class="teaser-link">Ler no blog →</span>
-        </a>
-      {% endfor %}
+{% for post in recentes %}
+  <a class="teaser-card" href="{{ post.url | relative_url }}">
+    <p class="blog-kicker">{{ post.category | replace: '-', ' ' | default: "Post" | upcase }}</p>
+    <h3>{{ post.title }}</h3>
+    <p class="blog-resumo">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+    <span class="teaser-link">Ler no blog →</span>
+  </a>
+{% endfor %}
     </div>
 
     <div class="blog-cta">
