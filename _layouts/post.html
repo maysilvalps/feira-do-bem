@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ page.title }} — Feira do Bem</title>
   <meta name="description" content="{{ page.excerpt | strip_html | truncate: 160 }}" />
-  <link rel="icon" type="image/png" href="/images/icon.png" />
+  <link rel="icon" type="image/png" href="{{ '/images/icon.png' | relative_url }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Caveat:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}" />
 </head>
 
 <body id="topo">
@@ -21,9 +21,8 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="wrap header-inner">
-      <a href="/index.html" class="logo" aria-label="Feira do Bem, página inicial">
+      <a href="{{ '/index.html' | relative_url }}" class="logo" aria-label="Feira do Bem, página inicial">
         <span class="logo-mark" aria-hidden="true">
-          <!-- SVG a partir do seu código existente -->
           <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
             <path d="M24 6c8 0 14 7 14 15 0 10-14 21-14 21S10 31 10 21C10 13 16 6 24 6Z" stroke="currentColor"
               stroke-width="2.5" stroke-linejoin="round" />
@@ -40,13 +39,13 @@
       </button>
 
       <nav class="nav" id="navMenu">
-        <a href="/index.html#topo">Início</a>
-        <a href="/index.html#historia">Sobre</a>
-        <a href="/index.html#como-funciona">Como funciona</a>
-        <a href="/index.html#ods">Os ODS aqui</a>
-        <a href="/blog.html">Blog</a>
-        <a href="/index.html#contato">Contato</a>
-        <a href="/index.html#cadastro" class="btn btn-small btn-leaf">Quero me cadastrar</a>
+        <a href="{{ '/index.html#topo' | relative_url }}">Início</a>
+        <a href="{{ '/index.html#historia' | relative_url }}">Sobre</a>
+        <a href="{{ '/index.html#como-funciona' | relative_url }}">Como funciona</a>
+        <a href="{{ '/index.html#ods' | relative_url }}">Os ODS aqui</a>
+        <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+        <a href="{{ '/index.html#contato' | relative_url }}">Contato</a>
+        <a href="{{ '/index.html#cadastro' | relative_url }}" class="btn btn-small btn-leaf">Quero me cadastrar</a>
       </nav>
     </div>
   </header>
@@ -68,7 +67,7 @@
       </article>
 
       <div class="blog-back" style="margin-top: 40px;">
-        <a href="/blog.html" class="btn btn-outline-dark">← Voltar ao blog</a>
+        <a href="{{ '/blog.html' | relative_url }}" class="btn btn-outline-dark">← Voltar ao blog</a>
       </div>
     </div>
   </main>
@@ -98,7 +97,6 @@
     </div>
   </footer>
 
-  <script src="/js/script.js"></script>
+  <script src="{{ '/js/script.js' | relative_url }}"></script>
 </body>
-
 </html>
