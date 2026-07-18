@@ -93,7 +93,7 @@ layout: none
               <span class="mes-ano">{{ post.date | date: "%b %Y" | downcase }}</span>
             </div>
             <div>
-              <span class="post-tag">{{ post.category | replace: '-', ' ' }}</span>
+              <span class="post-tag">{{ post.category | default: "Post" }}</span>
               <h2>{{ post.title }}</h2>
               <div class="post-body">
                 {{ post.excerpt | markdownify }}
