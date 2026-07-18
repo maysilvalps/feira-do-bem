@@ -1,6 +1,5 @@
 title: Feira do Bem
-baseurl: ""
-url: "https://maysilvalps.github.io/feira-do-bem"
-# theme: minima
-paginate: 5
+url: "https://maysilvalps.github.io"
+baseurl: "/feira-do-bem"
 permalink: /:categories/:year/:month/:day/:title/
+paginate: 5
