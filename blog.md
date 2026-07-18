@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+---
+layout: none
+permalink: /blog.html
+---
 
 <head>
   <meta charset="UTF-8" />
@@ -93,7 +95,7 @@
               <h2>{{ post.title }}</h2>
               <div class="post-body">
                 {{ post.excerpt | markdownify }}
-                <a href="{{ post.url }}">Leia mais</a>
+                <a href="{{ post.url | relative_url }}">Leia mais</a>
               </div>
             </div>
           </article>
@@ -186,5 +188,3 @@
 
   <script src="js/script.js"></script>
 </body>
-
-</html>
