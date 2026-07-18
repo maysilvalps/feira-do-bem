@@ -59,7 +59,7 @@
           <span class="mes-ano">{{ page.date | date: "%b %Y" | downcase }}</span>
         </div>
         <div>
-          <span class="post-tag">{{ page.category | default: "Post" | replace: '-', ' ' }}</span>
+          <span class="post-tag">{{ page.category | replace: '-', ' ' }}</span>
           <h1>{{ page.title }}</h1>
           <div class="post-body">
             {{ content }}
