@@ -1,8 +1,6 @@
 ---
 layout: none
 permalink: /blog.html
-pagination:
-  enabled: true
 ---
 
 <head>
@@ -62,9 +60,6 @@ pagination:
     <!-- ============ FAIXA DE ABERTURA COM LETREIRO ============ -->
     <section class="blog-hero-band">
       <div class="wrap">
-        <p style="background:#ffe066;color:#111;padding:12px;font-family:monospace;font-size:14px;">
-          DEBUG — site.posts: {{ site.posts.size }} | paginator.posts: {{ paginator.posts.size }} | total_pages: {{ paginator.total_pages }}
-        </p>
         <p class="blog-hero-eyebrow">Diário da Feira do Bem</p>
         <h1 class="blog-hero-title">O caderno de bordo das entregas</h1>
         <p class="blog-hero-sub">
@@ -88,9 +83,9 @@ pagination:
 
      <!-- ============ LAYOUT: POSTS + BARRA LATERAL ============ -->
     <div class="blog-layout">
-      <div class="blog-posts">
-        {% for post in paginator.posts %}
-          <article class="post-retro" id="{{ post.slug | default: post.title | slugify }}">
+      <div class="blog-posts" id="blogPosts">
+        {% for post in site.posts %}
+          <article class="post-retro" id="{{ post.slug | default: post.title | slugify }}" data-pagina="{{ forloop.index0 | divided_by: 4 | plus: 1 }}">
             <div class="post-date-stamp">
               <span class="dia">{{ post.date | date: "%d" }}</span>
               <span class="mes-ano">{{ post.date | date: "%b %Y" | downcase }}</span>
@@ -106,23 +101,11 @@ pagination:
           </article>
         {% endfor %}
 
-        {% if paginator.total_pages > 1 %}
-        <nav class="blog-paginator" aria-label="Paginação do blog">
-          {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | relative_url }}" class="btn btn-outline-dark btn-small">← Mais recentes</a>
-          {% else %}
-            <span class="btn btn-outline-dark btn-small is-disabled" aria-disabled="true">← Mais recentes</span>
-          {% endif %}
-
-          <span class="blog-paginator-info">Página {{ paginator.page }} de {{ paginator.total_pages }}</span>
-
-          {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | relative_url }}" class="btn btn-tomato btn-small">Postagens mais antigas →</a>
-          {% else %}
-            <span class="btn btn-tomato btn-small is-disabled" aria-disabled="true">Postagens mais antigas →</span>
-          {% endif %}
+        <nav class="blog-paginator" id="blogPaginator" aria-label="Paginação do blog">
+          <button type="button" id="paginatorPrev" class="btn btn-outline-dark btn-small">← Mais recentes</button>
+          <span class="blog-paginator-info" id="paginatorInfo">Página 1</span>
+          <button type="button" id="paginatorNext" class="btn btn-tomato btn-small">Postagens mais antigas →</button>
         </nav>
-        {% endif %}
       </div>
 
       <!-- ============ BARRA LATERAL COM WIDGETS ============ -->
