@@ -10,6 +10,7 @@ permalink: /blog.html
   <meta name="description"
     content="Diário da Feira do Bem, em Rondonópolis (MT): entregas da semana, histórias de famílias da comunidade, dicas de conservação e os ODS por trás do projeto." />
 
+  <link rel="icon" type="image/png" href="{{ '/images/icon.png' | relative_url }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -69,14 +70,12 @@ permalink: /blog.html
       </div>
       <div class="marquee" aria-hidden="true">
         <div class="marquee-track">
-          <span>🥕 excedente da semana já reservado</span>
-          <span>🍅 nova entrega no bairro Jardim das Flores</span>
-          <span>🌽 cadastre-se e receba o próximo aviso</span>
-          <span>🥬 ODS 2 · fome zero em prática</span>
-          <span>🥕 excedente da semana já reservado</span>
-          <span>🍅 nova entrega no bairro Jardim das Flores</span>
-          <span>🌽 cadastre-se e receba o próximo aviso</span>
-          <span>🥬 ODS 2 · fome zero em prática</span>
+          <span>● excedente da semana já reservado</span>
+          <span>● cadastre-se e receba o próximo aviso</span>
+          <span>● ODS 2 · fome zero em prática</span>
+          <span>● excedente da semana já reservado</span>
+          <span>● cadastre-se e receba o próximo aviso</span>
+          <span>● ODS 2 · fome zero em prática</span>
         </div>
       </div>
     </section>
@@ -121,36 +120,12 @@ permalink: /blog.html
         </div>
 
         <div class="widget">
-          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyContador">Contador de visitas</p>
-          <div class="widget-body" id="widgetBodyContador">
-            <div class="hitcounter" id="hitcounter" aria-hidden="true">
-              <span class="digito">0</span><span class="digito">0</span><span class="digito">0</span>
-              <span class="digito">0</span><span class="digito">0</span><span class="digito">1</span>
-            </div>
-            <p class="hitcounter-legenda">visitas neste navegador desde que a página foi criada</p>
-          </div>
-        </div>
-
-        <div class="widget">
           <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyPostagens">Postagens</p>
           <div class="widget-body" id="widgetBodyPostagens">
             <ul class="widget-lista widget-posts-lista">
               {% for post in site.posts limit:8 %}
                 <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
               {% endfor %}
-            </ul>
-          </div>
-        </div>
-
-        <div class="widget">
-          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyEntregas">Últimas entregas</p>
-          <div class="widget-body" id="widgetBodyEntregas">
-            <ul class="widget-lista">
-              <li>15/jul — Jardim das Flores, 4 caixas</li>
-              <li>06/jul — Jardim das Flores, 4 caixas</li>
-              <li>29/jun — Vila Progresso, 3 caixas</li>
-              <li>22/jun — Centro, 5 caixas</li>
-              <li>15/jun — Bairro São José, 2 caixas</li>
             </ul>
           </div>
         </div>
@@ -167,6 +142,17 @@ permalink: /blog.html
               <!-- preenchido via JavaScript a partir do localStorage -->
             </ul>
             <p class="guestbook-vazio" id="livroVazio" hidden>Seja a primeira pessoa a deixar um recado.</p>
+          </div>
+        </div>
+
+        <div class="widget">
+          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyContador">Contador de visitas</p>
+          <div class="widget-body" id="widgetBodyContador">
+            <div class="hitcounter" id="hitcounter" aria-hidden="true">
+              <span class="digito">0</span><span class="digito">0</span><span class="digito">0</span>
+              <span class="digito">0</span><span class="digito">0</span><span class="digito">1</span>
+            </div>
+            <p class="hitcounter-legenda">visitas neste navegador desde que a página foi criada</p>
           </div>
         </div>
 

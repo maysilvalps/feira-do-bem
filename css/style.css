@@ -33,7 +33,7 @@
 
 /* =========== RESET BÁSICO =========== */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0;
   background: var(--paper);
@@ -42,7 +42,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 h1, h2, h3, h4 { font-family: var(--font-display); margin: 0 0 .5em; line-height: 1.1; }
 p { margin: 0 0 1em; }
@@ -111,10 +111,19 @@ button { font-family: inherit; }
   background: rgba(245, 239, 220, 0.92);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(245, 239, 220, 0.55);
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.site-header.is-scrolled .header-inner {
+  padding-top: 10px; padding-bottom: 10px;
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
   padding-top: 14px; padding-bottom: 14px;
+  transition: padding .3s ease;
 }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
 .logo-mark { color: var(--leaf); display: inline-flex; }
@@ -287,7 +296,12 @@ button { font-family: inherit; }
 .blog-cta { margin-top: 44px; text-align: center; }
 
 /* =========== FOOTER =========== */
-.site-footer { background: var(--ink); color: var(--paper); padding-top: 64px; }
+.site-footer {
+  position: relative;
+  background-image: linear-gradient(180deg, rgba(27, 38, 24, 0.93) 0%, rgba(27, 38, 24, 0.88) 45%, rgba(27, 38, 24, 0.96) 100%), url("../images/banner2.jpeg");
+  background-size: cover; background-position: center;
+  color: var(--paper); padding-top: 64px;
+}
 .footer-inner {
   display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px;
   padding-bottom: 40px; border-bottom: 1px solid rgba(245,239,220,.12);
