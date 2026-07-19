@@ -8,5 +8,7 @@ plugins:
 
 pagination:
   enabled: true
+  collection: 'posts'
   sort_field: 'date'
   sort_reverse: true
+  permalink: '/blog/page/:num/'
