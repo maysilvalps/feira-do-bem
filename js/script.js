@@ -266,12 +266,13 @@ function initBlogPaginator() {
 
   function render() {
     posts.forEach((post) => {
-      post.hidden = parseInt(post.dataset.pagina, 10) !== paginaAtual;
+      const ehDaPagina = parseInt(post.dataset.pagina, 10) === paginaAtual;
+      post.style.display = ehDaPagina ? "" : "none";
     });
     info.textContent = `Página ${paginaAtual} de ${totalPaginas}`;
     prevBtn.classList.toggle("is-disabled", paginaAtual === 1);
     nextBtn.classList.toggle("is-disabled", paginaAtual === totalPaginas);
-    nav.hidden = totalPaginas <= 1;
+    nav.style.display = totalPaginas <= 1 ? "none" : "";
   }
 
   prevBtn.addEventListener("click", () => {
