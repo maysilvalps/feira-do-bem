@@ -62,6 +62,9 @@ pagination:
     <!-- ============ FAIXA DE ABERTURA COM LETREIRO ============ -->
     <section class="blog-hero-band">
       <div class="wrap">
+        <p style="background:#ffe066;color:#111;padding:12px;font-family:monospace;font-size:14px;">
+          DEBUG — site.posts: {{ site.posts.size }} | paginator.posts: {{ paginator.posts.size }} | total_pages: {{ paginator.total_pages }}
+        </p>
         <p class="blog-hero-eyebrow">Diário da Feira do Bem</p>
         <h1 class="blog-hero-title">O caderno de bordo das entregas</h1>
         <p class="blog-hero-sub">
