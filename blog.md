@@ -4,7 +4,7 @@ permalink: /blog.html
 pagination:
   enabled: true
   collection: posts
-  per_page: 5
+  per_page: 4
 ---
 
 <head>
@@ -20,7 +20,7 @@ pagination:
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Caveat:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@ pagination:
   <!-- ============ HEADER (mesmo menu do site, links ajustados) ============ -->
   <header class="site-header">
     <div class="wrap header-inner">
-      <a href="index.html" class="logo" aria-label="Feira do Bem, página inicial">
+      <a href="{{ '/index.html' | relative_url }}" class="logo" aria-label="Feira do Bem, página inicial">
         <span class="logo-mark" aria-hidden="true">
           <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
             <path d="M24 6c8 0 14 7 14 15 0 10-14 21-14 21S10 31 10 21C10 13 16 6 24 6Z" stroke="currentColor"
@@ -48,13 +48,13 @@ pagination:
       </button>
 
       <nav class="nav" id="navMenu">
-        <a href="index.html">Início</a>
-        <a href="index.html#historia">Sobre</a>
-        <a href="index.html#como-funciona">Como funciona</a>
-        <a href="index.html#ods">Os ODS aqui</a>
-        <a href="blog.html" aria-current="page">Blog</a>
-        <a href="index.html#contato">Contato</a>
-        <a href="index.html#cadastro" class="btn btn-small btn-leaf">Quero me cadastrar</a>
+        <a href="{{ '/index.html' | relative_url }}">Início</a>
+        <a href="{{ '/index.html#historia' | relative_url }}">Sobre</a>
+        <a href="{{ '/index.html#como-funciona' | relative_url }}">Como funciona</a>
+        <a href="{{ '/index.html#ods' | relative_url }}" id="linkODS" data-ods-mobile="{{ '/ods.html' | relative_url }}" data-ods-desktop="{{ '/index.html#ods' | relative_url }}">Os ODS aqui</a>
+        <a href="{{ '/blog.html' | relative_url }}" aria-current="page">Blog</a>
+        <a href="{{ '/index.html#contato' | relative_url }}">Contato</a>
+        <a href="{{ '/index.html#cadastro' | relative_url }}" class="btn btn-small btn-leaf">Quero me cadastrar</a>
       </nav>
     </div>
   </header>
@@ -88,7 +88,7 @@ pagination:
      <!-- ============ LAYOUT: POSTS + BARRA LATERAL ============ -->
     <div class="blog-layout">
       <div class="blog-posts">
-        {% for post in site.posts %}
+        {% for post in paginator.posts %}
           <article class="post-retro" id="{{ post.slug | default: post.title | slugify }}">
             <div class="post-date-stamp">
               <span class="dia">{{ post.date | date: "%d" }}</span>
@@ -104,14 +104,32 @@ pagination:
             </div>
           </article>
         {% endfor %}
+
+        {% if paginator.total_pages > 1 %}
+        <nav class="blog-paginator" aria-label="Paginação do blog">
+          {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="btn btn-outline-dark btn-small">← Mais recentes</a>
+          {% else %}
+            <span class="btn btn-outline-dark btn-small is-disabled" aria-disabled="true">← Mais recentes</span>
+          {% endif %}
+
+          <span class="blog-paginator-info">Página {{ paginator.page }} de {{ paginator.total_pages }}</span>
+
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | relative_url }}" class="btn btn-tomato btn-small">Postagens mais antigas →</a>
+          {% else %}
+            <span class="btn btn-tomato btn-small is-disabled" aria-disabled="true">Postagens mais antigas →</span>
+          {% endif %}
+        </nav>
+        {% endif %}
       </div>
 
       <!-- ============ BARRA LATERAL COM WIDGETS ============ -->
       <aside class="blog-sidebar">
 
         <div class="widget">
-          <p class="widget-title">Sobre este diário</p>
-          <div class="widget-body">
+          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodySobre">Sobre este diário</p>
+          <div class="widget-body" id="widgetBodySobre">
             <p>Aqui a gente registra as entregas da semana, histórias de quem doa e de
               quem recebe, e dicas para aproveitar melhor cada doação.</p>
             <p>Um projeto de extensão universitária — Tecnologia Aplicada à Inclusão Digital.</p>
@@ -119,8 +137,8 @@ pagination:
         </div>
 
         <div class="widget">
-          <p class="widget-title">Contador de visitas</p>
-          <div class="widget-body">
+          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyContador">Contador de visitas</p>
+          <div class="widget-body" id="widgetBodyContador">
             <div class="hitcounter" id="hitcounter" aria-hidden="true">
               <span class="digito">0</span><span class="digito">0</span><span class="digito">0</span>
               <span class="digito">0</span><span class="digito">0</span><span class="digito">1</span>
@@ -130,9 +148,21 @@ pagination:
         </div>
 
         <div class="widget">
-          <p class="widget-title">Últimas entregas</p>
-          <div class="widget-body">
+          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyPostagens">Postagens</p>
+          <div class="widget-body" id="widgetBodyPostagens">
+            <ul class="widget-lista widget-posts-lista">
+              {% for post in site.posts limit:8 %}
+                <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="widget">
+          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyEntregas">Últimas entregas</p>
+          <div class="widget-body" id="widgetBodyEntregas">
             <ul class="widget-lista">
+              <li>15/jul — Jardim das Flores, 4 caixas</li>
               <li>06/jul — Jardim das Flores, 4 caixas</li>
               <li>29/jun — Vila Progresso, 3 caixas</li>
               <li>22/jun — Centro, 5 caixas</li>
@@ -142,8 +172,8 @@ pagination:
         </div>
 
         <div class="widget">
-          <p class="widget-title">Livro de visitas</p>
-          <div class="widget-body">
+          <p class="widget-title" role="button" tabindex="0" aria-expanded="false" aria-controls="widgetBodyLivro">Livro de visitas</p>
+          <div class="widget-body" id="widgetBodyLivro">
             <form class="guestbook-form" id="formLivroVisitas">
               <input type="text" id="livroNome" placeholder="Seu nome" required maxlength="40" />
               <textarea id="livroMensagem" placeholder="Deixe um recado, uma história ou um agradecimento…" required maxlength="240"></textarea>
@@ -160,7 +190,7 @@ pagination:
     </div>
 
     <div class="blog-back">
-      <a href="index.html" class="btn btn-outline-dark">← Voltar para o início</a>
+      <a href="{{ '/index.html' | relative_url }}" class="btn btn-outline-dark">← Voltar para o início</a>
     </div>
 
   </main>
@@ -190,5 +220,5 @@ pagination:
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script src="{{ '/js/script.js' | relative_url }}"></script>
 </body>

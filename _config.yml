@@ -1,6 +1,10 @@
 title: Feira do Bem
 url: "https://maysilvalps.github.io"
 baseurl: "/feira-do-bem"
-paginate: 5
-paginate_path: "/blog/page/:num/"
 permalink: /:title/
+
+plugins:
+  - jekyll-paginate-v2
+
+pagination:
+  enabled: true

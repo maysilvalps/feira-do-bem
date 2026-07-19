@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: postlayout
 title: "Como conservar seus tomates por mais tempo 🍅"
-date: 2026-07-18
+date: 2026-07-16
 category: Dicas
 ---
 

@@ -368,6 +368,26 @@ button { font-family: inherit; }
 .widget-lista li { font-size: 0.88rem; padding-left: 18px; position: relative; color: rgba(35,48,31,.82); }
 .widget-lista li::before { content: "🥕"; position: absolute; left: 0; top: 0; font-size: 0.8rem; }
 
+@media (max-width: 900px) {
+  .widget-title { cursor: pointer; user-select: none; }
+  .widget-title::before { transition: transform .2s ease; }
+  .widget.is-open .widget-title::before { transform: rotate(90deg); }
+  .widget-body {
+    max-height: 0; overflow: hidden; padding-top: 0; padding-bottom: 0;
+    transition: max-height .3s ease, padding .3s ease;
+  }
+  .widget.is-open .widget-body { max-height: 700px; padding-top: 18px; padding-bottom: 18px; }
+}
+
+.widget-posts-lista li::before { content: "📝"; }
+.widget-posts-lista a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .15s ease;
+}
+.widget-posts-lista a:hover { color: var(--tomato); text-decoration: underline; }
+
 .hitcounter { display: flex; justify-content: center; gap: 4px; padding: 6px 0 2px; }
 .hitcounter .digito {
   background: var(--ink); color: #7CFF7C; font-family: var(--font-mono);
@@ -392,7 +412,32 @@ button { font-family: inherit; }
 .guestbook-entry p { margin: 4px 0 0; font-size: 0.86rem; color: rgba(35,48,31,.82); }
 .guestbook-vazio { font-size: 0.86rem; color: rgba(35,48,31,.5); font-style: italic; margin-top: 14px; }
 
+.blog-paginator {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; margin-top: 8px;
+}
+.blog-paginator-info {
+  font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase;
+  letter-spacing: .04em; color: rgba(35,48,31,.55);
+}
+.blog-paginator .is-disabled { opacity: .35; pointer-events: none; }
+@media (max-width: 560px) {
+  .blog-paginator { justify-content: center; text-align: center; }
+  .blog-paginator-info { order: 3; width: 100%; }
+}
+
 .blog-back { padding: 0 24px 60px; text-align: center; }
+
+/* =========== SELOS ODS DENTRO DOS POSTS =========== */
+.ods-selo-grid {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px; margin: 20px 0;
+}
+.ods-selo-grid img {
+  width: clamp(100px, 22vw, 200px);
+  height: auto;
+  border-radius: 6px;
+}
 
 /* =========== SCROLL REVEAL =========== */
 [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }

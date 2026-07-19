@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: postlayout
 title: "Colheita Fresca da Semana: Do Campo para a Mesa"
 date: 2026-07-18
 category: Diário

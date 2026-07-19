@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHitCounter();
   initGuestbook();
   initLinkDoador();
+  initWidgetsAccordion();
 });
 
 // -----------------------------------------------------
@@ -244,6 +245,33 @@ function initGuestbook() {
 }
 
 // -----------------------------------------------------
+// ACORDEÃO DOS WIDGETS DA SIDEBAR (só no celular)
+// No computador os widgets ficam sempre abertos; a interação
+// de clicar pra abrir/fechar só existe em telas estreitas.
+// -----------------------------------------------------
+function initWidgetsAccordion() {
+  const titulos = document.querySelectorAll(".blog-sidebar .widget-title");
+  if (!titulos.length) return;
+
+  function alternar(titulo) {
+    if (window.innerWidth > 900) return;
+    const widget = titulo.closest(".widget");
+    const aberto = widget.classList.toggle("is-open");
+    titulo.setAttribute("aria-expanded", String(aberto));
+  }
+
+  titulos.forEach((titulo) => {
+    titulo.addEventListener("click", () => alternar(titulo));
+    titulo.addEventListener("keydown", (evento) => {
+      if (evento.key === "Enter" || evento.key === " ") {
+        evento.preventDefault();
+        alternar(titulo);
+      }
+    });
+  });
+}
+
+// -----------------------------------------------------
 // REVELAÇÃO SUAVE AO ROLAR A PÁGINA
 // -----------------------------------------------------
 function initScrollReveal() {
@@ -308,10 +336,13 @@ function ajustarLinkODS() {
   const linkOds = document.getElementById('linkODS');
   if (!linkOds) return;
 
+  const hrefMobile = linkOds.dataset.odsMobile || "ods.html";
+  const hrefDesktop = linkOds.dataset.odsDesktop || "#ods";
+
   if (window.innerWidth <= 720) {
-    linkOds.href = "ods.html";
+    linkOds.href = hrefMobile;
   } else {
-    linkOds.href = "#ods";
+    linkOds.href = hrefDesktop;
   }
 }
 
