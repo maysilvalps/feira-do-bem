@@ -29,10 +29,10 @@ Confira alguns registros do que recebemos hoje e que já está sendo preparado p
 </style>
 
 <div class="galeria-grid">
-  <a href="/images/blog1.jpeg"><img src="/images/blog1.jpeg"></a>
-  <a href="/images/blog2.jpeg"><img src="/images/blog2.jpeg"></a>
-  <a href="/images/blog3.jpeg"><img src="/images/blog3.jpeg"></a>
-  <a href="/images/blog4.jpeg"><img src="/images/blog4.jpeg"></a>
+  <a href="{{ '/images/blog1.jpeg' | relative_url }}"><img src="{{ '/images/blog1.jpeg' | relative_url }}"></a>
+  <a href="{{ '/images/blog2.jpeg' | relative_url }}"><img src="{{ '/images/blog2.jpeg' | relative_url }}"></a>
+  <a href="{{ '/images/blog3.jpeg' | relative_url }}"><img src="{{ '/images/blog3.jpeg' | relative_url }}"></a>
+  <a href="{{ '/images/blog4.jpeg' | relative_url }}"><img src="{{ '/images/blog4.jpeg' | relative_url }}"></a>
 </div>
 
 <p class="texto-central">
