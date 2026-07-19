@@ -3,11 +3,3 @@ url: "https://maysilvalps.github.io"
 baseurl: "/feira-do-bem"
 permalink: /:title/
 future: true
-
-plugins:
-  - jekyll-paginate-v2
-
-pagination:
-  enabled: true
-  per_page: 4
-  sort_reverse: true

@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGuestbook();
   initLinkDoador();
   initWidgetsAccordion();
+  initBlogPaginator();
 });
 
 // -----------------------------------------------------
@@ -242,6 +243,52 @@ function initGuestbook() {
   });
 
   desenhar();
+}
+
+// -----------------------------------------------------
+// PAGINAÇÃO DO BLOG (feita no navegador, 4 posts por página)
+// Os posts já vêm todos prontos do Jekyll; aqui só escondemos
+// os que não são da página atual e trocamos com os botões.
+// -----------------------------------------------------
+function initBlogPaginator() {
+  const container = document.getElementById("blogPosts");
+  const nav = document.getElementById("blogPaginator");
+  if (!container || !nav) return;
+
+  const posts = Array.from(container.querySelectorAll(".post-retro"));
+  if (!posts.length) return;
+
+  const totalPaginas = Math.max(...posts.map((p) => parseInt(p.dataset.pagina, 10) || 1));
+  const prevBtn = document.getElementById("paginatorPrev");
+  const nextBtn = document.getElementById("paginatorNext");
+  const info = document.getElementById("paginatorInfo");
+  let paginaAtual = 1;
+
+  function render() {
+    posts.forEach((post) => {
+      post.hidden = parseInt(post.dataset.pagina, 10) !== paginaAtual;
+    });
+    info.textContent = `Página ${paginaAtual} de ${totalPaginas}`;
+    prevBtn.classList.toggle("is-disabled", paginaAtual === 1);
+    nextBtn.classList.toggle("is-disabled", paginaAtual === totalPaginas);
+    nav.hidden = totalPaginas <= 1;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    if (paginaAtual === 1) return;
+    paginaAtual -= 1;
+    render();
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (paginaAtual === totalPaginas) return;
+    paginaAtual += 1;
+    render();
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  render();
 }
 
 // -----------------------------------------------------
