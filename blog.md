@@ -1,6 +1,10 @@
 ---
 layout: none
 permalink: /blog.html
+pagination:
+  enabled: true
+  collection: posts
+  per_page: 5
 ---
 
 <head>
