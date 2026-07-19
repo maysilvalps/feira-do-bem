@@ -2,6 +2,7 @@ title: Feira do Bem
 url: "https://maysilvalps.github.io"
 baseurl: "/feira-do-bem"
 permalink: /:title/
+future: true
 
 plugins:
   - jekyll-paginate-v2
